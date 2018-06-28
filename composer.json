@@ -1,5 +1,5 @@
 {
-    "name": "stickee/zend-expressive-sentry",
+    "name": "suntechsoft/zend-expressive-sentry",
     "description": "Sentry Error Logging for Zend Expressive",
     "type": "library",
     "license": "MIT",
