@@ -1,5 +1,5 @@
 {
-    "name": "Orkin/zend-expressive-sentry",
+    "name": "orkin/zend-expressive-sentry",
     "description": "Sentry Error Logging for Zend Expressive",
     "type": "library",
     "license": "MIT",
