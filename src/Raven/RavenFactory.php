@@ -5,28 +5,19 @@
 
 namespace Stickee\Sentry\Raven;
 
-use Interop\Container\ContainerInterface;
-use Interop\Container\Exception\ContainerException;
+use Psr\Container\ContainerInterface;
 use Raven_Client;
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\Exception\ServiceNotFoundException;
-use Zend\ServiceManager\Factory\FactoryInterface;
 
-class RavenFactory implements FactoryInterface
+class RavenFactory
 {
     /**
      * Create an object
      *
      * @param  ContainerInterface $container
-     * @param  string $requestedName
-     * @param  null|array $options
      *
      * @return Raven_Client
-     *
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container)
     {
         $config = $container->get('config');
 
