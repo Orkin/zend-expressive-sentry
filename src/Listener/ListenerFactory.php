@@ -5,24 +5,19 @@
 
 namespace Stickee\Sentry\Listener;
 
-use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
 
-class ListenerFactory implements FactoryInterface
+class ListenerFactory
 {
     /**
      * Create an object
      *
-     * @param \Interop\Container\ContainerInterface $container
-     * @param string $requestedName
-     * @param array|null $options
+     * @param ContainerInterface $container
      *
-     * @return \Stickee\Sentry\Listener\Listener
+     * @return Listener
      *
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container)
     {
         /** @var \Raven_Client $raven */
         $raven = $container->get(\Raven_Client::class);

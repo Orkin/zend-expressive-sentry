@@ -5,11 +5,13 @@
 
 namespace Stickee\Sentry;
 
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 use Stickee\Sentry\Listener\Listener;
-use Zend\ServiceManager\Factory\DelegatorFactoryInterface;
+use Zend\Stratigility\Middleware\ErrorHandler;
 
-class ListenerDelegator implements DelegatorFactoryInterface
+;
+
+class ListenerDelegator
 {
     /**
      * A factory that creates delegates of a given service
@@ -19,16 +21,13 @@ class ListenerDelegator implements DelegatorFactoryInterface
      * @param  callable $callback
      * @param  null|array $options
      *
-     * @return \Zend\Stratigility\Middleware\ErrorHandler
-     *
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @return ErrorHandler
      */
     public function __invoke(ContainerInterface $container, $name, callable $callback, array $options = null)
     {
         $listener = $container->get(Listener::class);
 
-        /** @var \Zend\Stratigility\Middleware\ErrorHandler $errorHandler */
+        /** @var ErrorHandler $errorHandler */
         $errorHandler = $callback();
 
         $errorHandler->attachListener($listener);
